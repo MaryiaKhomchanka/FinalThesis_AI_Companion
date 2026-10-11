@@ -1,0 +1,54 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Character.moc3",
+		"Textures": [
+			"textures/texture_00.png"
+		],
+		"Physics": "Character.physics3.json",
+		"DisplayInfo": "Character.cdi3.json",
+		"Motions": {
+			"Idle": [
+				{
+					"File":"animations/idle.motion3.json"
+				}
+			],
+			"FallAsleep": [
+				{
+					"File": "animations/tired.motion3.json"
+				}
+			],
+			"Sleeping": [
+				{
+					"File": "animations/sleep.motion3.json"
+				}
+			]
+		},
+
+		"Expressions": [
+			{
+				"Name": "Neutral",
+				"File": "expression/neutral.exp3.json"
+			},
+			{
+				"Name": "Sad",
+				"File": "expression/sad.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}

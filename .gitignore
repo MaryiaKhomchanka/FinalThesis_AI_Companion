@@ -1,0 +1,17 @@
+unity/[Ll]ibrary/
+unity/[Tt]emp/
+unity/[Oo]bj/
+unity/[Ll]ogs/
+unity/[Bb]uild/
+unity/[Bb]uilds/
+unity/[Uu]ser[Ss]ettings/
+
+
+local/.venv/
+__pycache__/
+*.pyc
+
+.env
+.env.*
+
+.vs/
