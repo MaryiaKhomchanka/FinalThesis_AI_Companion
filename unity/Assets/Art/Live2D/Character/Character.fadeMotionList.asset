@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
   m_Name: Character.fadeMotionList
   m_EditorClassIdentifier: Live2D.Cubism::Live2D.Cubism.Framework.MotionFade.CubismFadeMotionList
-  MotionInstanceIds: 70a6feff46a6feff2aa6feff
+  MotionInstanceIds: 70a6feff46a6feff2aa6feff62edffff46edffff3cecffff
   CubismFadeMotionObjects:
   - {fileID: 11400000, guid: 1afac51e66992f2478fdcbd2bee8f773, type: 2}
   - {fileID: 11400000, guid: 6add3f5108d30874a93338475b2e5c0e, type: 2}
   - {fileID: 11400000, guid: a1d971db9722c8242846f5f8fde74f39, type: 2}
+  - {fileID: 11400000, guid: 351395096958ff04cbed3dd336a5a82c, type: 2}
+  - {fileID: 11400000, guid: e60186d3de9d59e4bb1f070ad9c1b90d, type: 2}
+  - {fileID: 11400000, guid: 6023860e3deb45f4891c08adeacf5702, type: 2}

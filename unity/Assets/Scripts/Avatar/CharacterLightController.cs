@@ -37,6 +37,8 @@ public class CharacterLightController : MonoBehaviour, ICubismUpdatable
     private bool isPulsing = false;
     private float pulseTime = 0f;
 
+    private bool animationControlsLights = false;
+
     public int ExecutionOrder => 9000;
     public bool NeedsUpdateOnEditing => false;
     public bool HasUpdateController { get; set; }
@@ -110,8 +112,17 @@ public class CharacterLightController : MonoBehaviour, ICubismUpdatable
         isPulsing = false;
     }
 
+    public void SetAnimationControl(bool enabled) 
+    {
+        animationControlsLights = enabled;
+    }
+
     public void OnLateUpdate() 
     {
+        if (animationControlsLights) 
+        {
+            return;
+        }
         if (lights == null || red == null || yellow == null || green == null) 
         {
             return;

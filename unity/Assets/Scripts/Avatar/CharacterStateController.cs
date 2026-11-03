@@ -8,19 +8,18 @@ public enum CharacterState
     Listening, 
     Processing, 
     Speaking, 
-    Paused
 }
 
 public class CharacterStateController : MonoBehaviour
 {
     [SerializeField] private CharacterExpressionController expressionController;
+    [SerializeField] private Animator animator;
     [SerializeField] private CharacterLightController lightController;
-    [SerializeField] private TMP_Text statusText;
+    [SerializeField] private RandomLook randomLook;
     [SerializeField] private int idleExpression = -1;
     [SerializeField] private int listeningExpression = -1;
     [SerializeField] private int processingExpression = -1;
     [SerializeField] private int speakingExpression = -1;
-    [SerializeField] private int pausedExpression = -1;
 
     private CharacterState currentState;
     void Start()
@@ -31,24 +30,35 @@ public class CharacterStateController : MonoBehaviour
     private void ChangeState(CharacterState state)
     {
         currentState = state;
+        string animationState = "Idle";
         int expressionNum = -1;
+        if (lightController != null) 
+        {
+            lightController.SetAnimationControl(state == CharacterState.Processing);
+        }
+        if (randomLook != null) 
+        {
+            bool enable = state != CharacterState.Processing;
+            randomLook.SetAutomaticLook(enable);
+        }
 
         switch (state)
         {
             case CharacterState.Idle:
+                animationState = "Idle";
                 expressionNum = idleExpression;
                 break;
             case CharacterState.Listening:
+                animationState = "Listening";
                 expressionNum = listeningExpression;
                 break;
             case CharacterState.Processing:
+                animationState = "Processing";
                 expressionNum = processingExpression;
                 break;
             case CharacterState.Speaking:
+                animationState = "Idle";
                 expressionNum = speakingExpression;
-                break;
-            case CharacterState.Paused:
-                expressionNum = pausedExpression;
                 break;
         }
 
@@ -56,11 +66,15 @@ public class CharacterStateController : MonoBehaviour
         {
             expressionController.SetExpression(expressionNum);
         }
-        if (statusText != null)
+        if (animator != null)
         {
-            statusText.text = "Demo state: " + state;
+            string stateName = "Base Layer." + animationState;
+            animator.CrossFadeInFixedTime(stateName, 0.15f, 0, 0f);
         }
-        Debug.Log("Companion state: " + state);
+        else 
+        {
+            Debug.LogWarning("Animator is not assigned");
+        }
     }
 
     public void SetIdle()
@@ -79,9 +93,4 @@ public class CharacterStateController : MonoBehaviour
     {
         ChangeState(CharacterState.Speaking);
     }
-    public void SetPaused()
-    {
-        ChangeState(CharacterState.Paused);
-    }
-
 }
